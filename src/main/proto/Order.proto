@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.examle";
+
+service StudentServce{
+
+rpc GetStudent(StudentRequest) returns (StudentResponse) {};
+rpc ServerSideStreaming(StudentRequest) returns (stream StudentResponse) {};
+rpc ClientSideStreaming(stream StudentRequest) returns (StudentResponse) {};
+rpc BiDirectionalStreaming(stream StudentRequest) returns (stream StudentResponse) {};
+
+}
+
+message StudentRequest{
+int32 id = 1;
+}
+
+message StudentResponse{
+  string name = 1;
+  int32 age = 2;
+}
